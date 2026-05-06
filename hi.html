@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Resizer</title>
+    <style>
+        body { text-align: center; font-family: Arial; margin-top: 20px; }
+        /* Κεντράρισμα για εικόνα ή κουτί */
+        #target {
+            margin: 20px auto;
+            border: 1px solid black; /* Προαιρετικό περίγραμμα */
+        }
+    </style>
+</head>
+<body>
+    <h3>ΟΝΟΜΑΤΕΠΩΝΥΜΟ - ΑΜ</h3>
+
+    <div id="target" style="font-size: 10px;">Hi!</div>
+
+    <br>
+    <h2 id="label">10px</h2>
+
+    <button onclick="changeSize(5)">+5</button>
+    <button onclick="changeSize(-5)">-5</button>
+
+    <script>
+        function changeSize(step) {
+            let el = document.getElementById('target');
+            let label = document.getElementById('label');
+
+            // 1. ΔΙΑΒΑΣΜΑ ΤΡΕΧΟΥΣΑΣ ΤΙΜΗΣ
+            // Αν είναι ΚΕΙΜΕΝΟ:
+            let current = parseInt(el.style.fontSize);
+            // Αν είναι ΕΙΚΟΝΑ (Πλάτος):
+            // let current = parseInt(el.style.width);
+
+            // 2. ΥΠΟΛΟΓΙΣΜΟΣ ΝΕΑΣ ΤΙΜΗΣ
+            let next = current + step;
+
+            // 3. ΕΛΕΓΧΟΣ ΟΡΙΩΝ (π.χ. 10 έως 50)
+            if (next >= 10 && next <= 50) {
+                
+                // 4. ΕΦΑΡΜΟΓΗ
+                // Αν είναι ΚΕΙΜΕΝΟ:
+                el.style.fontSize = next + "px";
+                label.innerHTML = next + "px";
+
+                // Αν είναι ΕΙΚΟΝΑ:
+                // el.style.width = next + "px";
+                // label.innerHTML = "Πλάτος: " + next + "px";
+            }
+        }
+    </script>
+</body>
+</html>
